@@ -1,38 +1,225 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+
+:root {
+  /* Light Theme Palette - High Contrast */
+  --bg-light: #FFFFFF;
+  --bg-card: #F8F9FA;
+  --border-light: #E0E0E0;
+  --border-dark: #B0B0B0;
+  --text-primary: #212529;
+  --text-secondary: #495057;
+  --text-muted: #6C757D;
+  --accent-primary: #4361EE; /* Vibrant blue */
+  --accent-secondary: #7209B7; /* Purple */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-accent: 0 4px 12px rgba(67, 97, 238, 0.2);
+}
+
+body {
+  margin: 0;
+  font-family: 'Quicksand', sans-serif;
+  background: var(--bg-light);
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  animation: fadeIn 0.8s ease-in;
+}
+
+/* Typography */
+h1 {
+  font-size: 2.7rem;
   text-align: center;
+  margin-bottom: 30px;
+  color: var(#495057);
+  letter-spacing: 1px;
+  font-weight: 700;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h2 {
+  margin: 1rem 2rem;
+  color: var(--accent-primary);
+  font-weight: 600;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Pet Card Grid */
+.pet-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 28px;
+  animation: fadeInUp 1s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.pet-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  text-align: center;
+  overflow: hidden;
+}
+
+.pet-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-primary);
+}
+
+.pet-card h3 {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.pet-card p {
+  font-size: 0.95rem;
+  margin: 6px 0;
+  color: var(--text-secondary);
+}
+
+.pet-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 12px;
+  transition: transform 0.3s ease;
+  border: 1px solid var(--border-light);
+}
+
+.pet-card img:hover {
+  transform: scale(1.04);
+}
+
+.no-image {
+  height: 180px;
+  background-color: rgba(67, 97, 238, 0.05);
+  color: var(--text-muted);
+  font-style: italic;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  border-radius: 8px;
+  margin-top: 12px;
+  border: 1px dashed var(--border-dark);
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  margin-left: 2rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+input,
+select,
+textarea {
+  width: 42%;
+  padding: 12px 16px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 0.95rem;
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-dark);
+  border-radius: 8px;
+  color: var(--text-primary);
+  margin: 0 15px 15px 2rem;
+  transition: all 0.3s ease;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}
+
+select {
+  width: 45%; 
+  margin-left: 0 ;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent-primary);
+  box-shadow: var(--shadow-accent);
+  outline: none;
+  background-color: var(--bg-light);
+}
+
+/* Buttons */
+button {
+  background-color: var(--accent-primary);
   color: white;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 10px 2rem 0;
+  transition: all 0.3s ease;
+  font-family: 'Quicksand', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+button:hover {
+  background-color: #3A56DB;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+button:active {
+  transform: translateY(0);
+  background-color: var(--accent-secondary);
+}
+
+.button-secondary {
+  background-color: transparent;
+  color: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
+}
+
+.button-secondary:hover {
+  background-color: rgba(67, 97, 238, 0.08);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  input,
+  select,
+  textarea {
+    width: 80%;
+    margin-left: 0;
   }
-  to {
-    transform: rotate(360deg);
+  
+  select {
+    width: 83%;
+  }
+  
+  button {
+    margin-left: 0;
   }
 }

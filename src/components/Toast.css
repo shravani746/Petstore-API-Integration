@@ -1,0 +1,33 @@
+/* src/components/Toast.css */
+
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Green background for success */
+    color: white;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 16px;
+    z-index: 1000;
+    display: block;
+    animation: slideIn 0.5s ease-in-out;
+  }
+  
+  /* Animation to make the toast slide in */
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  /* For failure message, change color */
+  .toast.error {
+    background-color: #f44336; /* Red background for error */
+  }
+  
